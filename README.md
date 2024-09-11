@@ -1,59 +1,53 @@
 # lifeBalance
 LifeBalance is a ML based health and wellness service
 
-### Quick start
-** Make sure you have Maven and JDK Version >= 1.8 **
-> Clone/Download the repo then edit in controller / service / repository
+using [Flask](http://flask.pocoo.org/) and [Flask-RESTPlus](https://flask-restplus.readthedocs.io/en/stable/).
+It uses [Pyenv](https://github.com/pyenv/pyenv) and [Pipenv](https://pipenv.readthedocs.io/en/latest/)
+for runtime and package management.
+It also uses [pytest](https://docs.pytest.org/en/latest/) and [pytest-flask](https://pytest-flask.readthedocs.io/en/latest/)
+for unit testing.
+
+# Set Up
+
+Install [Pyenv](https://github.com/pyenv/pyenv) following the [official installation instructions](https://github.com/pyenv/pyenv#installation).
+
+Download the proper python version:
 
 ```bash
-# clone our repo
-# --depth 1 removes all but one .git commit history
-git clone https://github.com//spring-boot-starter.git
-
-# change directory to our repo
-cd spring-boot-starter
-
-# install the repo with mvn
-mvn install
-
-# start the application
-mvn spring-boot:run
+# Installs the version from ".python-version" if not installed 
+# Can take some time.
+pyenv install
 ```
-go to [http://localhost:8081/api](http://localhost:8081/api) in your browser or Postman (or the other similar app)
 
-## File Structure
-We are using Controller, Service, Repository layer in this starter. this way to ensure maintainable code based on behavior for each layer.
+Install pipenv:
+
+```bash
+pip install --user pipenv
 ```
-springboot.starter
- ├─common/                          * our common files
- │   ├──Constant                    * our files to maintain constant variables
- │   └──Tool                        * our files to maintain static/ reusable methods
- │
- ├──config/                         * our configuration files
- │   └──SwaggerConfig               * configuration file to configure swagger documentation
- │
- ├──dto
- │   ├──FailureResponse             * our JSON format that return by exception handler
- │   ├──SuccessResponse             * our JSON format that return is transaction/ process is success
- │   └──Response                    * our JSON standard JSON format
- │
- ├──exception                       * our custom exception files and exception handler
- │   └──HandlerException            * our runtime exception handler that return a nice JSON
- │
- ├──interceptor                     * our filter files
- │   ├──Interceptor                 * our main Interceptor
- │   └──LogInterceptor              * our pre and post handle that log activity in web service
- │
- ├──entity                          * our entity files that mapping to table in database
- │   └──Person                      * our object mapping table Person
- │
- ├──controller                      * our controller files that define endpoints/ route mapping
- │   └──PersonController            * our endpoint to handle Person module
- │
- ├──service                         * our service files to handle business logic
- │   └──PersonService               * our logic to handle Person module
- │
- └──repository                      * out repository files to handle query / command to database
-     └──PersonRepository            * our query related with table Person
 
+Install all dependencies
+
+```bash
+pipenv install
+```
+
+# Run locally
+
+```bash
+# If you haven't already, then start a pipenv shell
+pipenv shell
+
+PYTHON_ENV=development python src/main.py
+```
+
+Visit Swagger UI on [http://localhost:5000/api/swagger](http://localhost:5000/api/swagger).
+
+# Run unit tests
+
+
+```bash
+# If you haven't already, then start a pipenv shell
+pipenv shell
+
+python -m pytest
 ```
